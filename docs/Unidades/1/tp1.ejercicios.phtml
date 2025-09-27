@@ -259,7 +259,7 @@ $arrExcercises = array(
 
         echo ' 
         
-        <h2>Crear una calculadora básica “server side (usando php)”</h2>
+        <h2>Crear una calculadora básica “server side" (usando php)</h2>
         <ul class="tp-list">
             <li>Esta calculadora debe permitir generar operaciones básicas dado dos números leídos desde un formulario.</li>
             <li>Ademas, se deberá incluir una barra de navegación para:</li>
@@ -296,7 +296,7 @@ $arrExcercises = array(
                     echo $resultado;
                     break;
                 case 'multiplicacion':
-                    $resultado = "$valor1 * $valor2 = " . $valor1 * $valor2;
+                    $resultado = "$valor1 x $valor2 = " . $valor1 * $valor2;
                     echo $resultado;
                     break;
                 case 'division':
@@ -307,7 +307,7 @@ $arrExcercises = array(
                     echo 'Se produjo un error, intente de nuevo</h3>';
             }
             echo '</h3>
-            <a class="card-links" href="Unidad/1/?exercise=7">Volver al menu anterior</a>';
+            <a class="card-links" href="Unidad/1/ejercicio7">Volver al menu anterior</a>';
 
         } else {
             showCalculator();

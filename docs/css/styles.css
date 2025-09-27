@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
     color: white;
     margin: 0;
     padding: 0;
@@ -14,32 +14,29 @@ body {
 }
 
 #nav-title {
-    font-size: 1.5em;
+    font-size: 2em;
     text-shadow: 12px 5px 20px #000000;
-    width: 60%;
+    width: fit-content;
     height: fit-content;
-    padding: 0;
-    margin: 0;
+    padding: 10px;
 }
 
 #left-menu {
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    width: 50%;
+    justify-content: left;
+    gap: 50px;
+    width: 40%;    
 }
-
-
 
 #tittle-links-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    place-items: left;
-    height: fit-content;
+    align-items: center;
+    justify-content: left;
+    height: 100%;
     font-size: 1.2em;
-    width: 40%;
+    gap: 10px;
 }
 
 .title-links {
@@ -48,22 +45,22 @@ body {
     padding: 10px 20px;
 }
 
-
 .nav-menu {
-    width: 50%;
-    justify-content: space-around;
+    width: 60%;
+    justify-content: center;
 }
 
 #nav-list {
     align-items: center;
     justify-content: center;
-    gap: 33px;
+    gap: 5px;
     list-style-type: none;
+    height: 100%;
 }
 
 #nav-links {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
 }
 
@@ -72,22 +69,15 @@ body {
     width: 100%;
 }
 
-.nav-link {
-    font-size: 1.4em;
-    padding: 10px 20px;
-}
-
 .nav-link.big {
     font-size: 2em;
     font-weight: bold;
+    padding: 15px 25px;
 }
 
 .nav-link {
-    font-size: 1em;
     font-style: bold;
-    padding: 10px 20px;
-    margin: 0 auto;
-    border-radius: 10px;
+    padding: 15px 15px;
 }
 
 .nav-link,
@@ -133,10 +123,9 @@ body {
 
 .card {
     font-size: 0.9em;
-    width: 500px;
+    width: 450px;
     padding: 50px;
     height: 600px;
-    /* background-color: blue; */
     justify-content: flex-start;
     border-style: solid;
     border-radius: 2%;
@@ -198,9 +187,6 @@ footer {
     transition: 0.5s background-color ease;
 }
 
-
-
-
 /* ID Ejercicios */
 
 .tp-list {
@@ -211,20 +197,15 @@ footer {
     align-self: center;
     font-size: 1.3em;
     height: 100%;
-
 }
 
 .tp-list li {
-
     text-align: left;
-    margin-top: 5px;
 }
 
 .list-style-none {
     list-style: none;
 }
-
-
 
 .table-container {
     min-width: fit-content;
@@ -257,7 +238,6 @@ td {
     font-weight: bold;
 }
 
-
 .forms-tp {
     display: inherit;
     flex-direction: inherit;
@@ -269,13 +249,11 @@ td {
 
 .forms-tp label {
     font-size: 1.4em;
-
 }
 
 .forms-tp input {
     font-size: 1.2em;
     padding: 2px;
-
 }
 
 .forms-tp input:focus {
@@ -332,11 +310,9 @@ td {
 }
 
 #about-list {
-    justify-self: center;
+    justify-content: space-evenly;
     align-items: center;
     list-style: none;
-    width: 67%;
-    margin: 0;
     padding: 0;
 }
 
