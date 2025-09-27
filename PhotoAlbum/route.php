@@ -17,7 +17,7 @@ if (isset($_GET['object']) && isset($objects[$_GET['object']])) {
         echo '</section>';
     }
 } else {
-    echo "<section class='card'><a class='card-links' href='../site/Unidad/2/ejercicio6'>Volver atrás</a><h1>Seleccione un objeto:</h1><br>";
+    echo "<section class='card'><a class='card-links' href='../docs/Unidad/2/ejercicio6'>Volver atrás</a><h1>Seleccione un objeto:</h1><br>";
     foreach ($objects as $object => $data)
         echo "<a class='card-links' href='$object'>" . $data["name"] . "</a><br>";
     echo '</div></main></section>';
