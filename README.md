@@ -1,1 +1,1 @@
-# TrabajosPracticos_WEB2_2025
+# TrabajosPracticos | WEB2 - 2025
