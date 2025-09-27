@@ -1,0 +1,28 @@
+<?php
+require_once 'lib/Figuras.php';
+
+function showList($params){
+
+    
+    // instancia la clase Figuras para acceder a las figuras
+    $figuras = new Figuras();
+    
+    echo 
+    "<section class='card'>
+    <h2>Lista de figuras:</h2>
+    <ul class='tp-list'>";
+    
+    foreach($figuras->getAll() as $figura) {
+        echo "<li>" . 
+        $figura->ToString() . 
+        " | <a href='verFigura/" . $figura->getId() . "'>VER </a>" .
+        "</li>";
+    }
+    
+    echo "
+    </ul>
+    <a class='card-links' href='./'>Volver</a>
+    </section>";
+    
+}
+?>
