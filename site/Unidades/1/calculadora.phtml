@@ -1,0 +1,67 @@
+<?php
+function showCalculator()
+{
+    ?>
+    <a class="card-links" href="Unidad/1/ejercicio7?numero-pi">Número π (pi)</a>
+
+
+    <form class="forms-tp" action="" method="POST">
+
+        <label for="valor1">Ingrese un número entero:</label>
+        <input type="text" name="valor1" placeholder="Valor 1">
+
+        <label for="valor2">Ingrese un número entero:</label>
+        <input type="text" name="valor2" placeholder="Valor 2">
+
+        <label for="operacion">Operación</label>
+        <select name="operacion" id="operacion">
+            <option value="suma">Sumar</option>
+            <option value="resta">Restar</option>
+            <option value="multiplicacion">Multiplicar</option>
+            <option value="division">Dividir</option>
+        </select>
+        <button type="submit">Calcular</button>
+
+    </form>
+    <?php
+}
+
+function showPiInfo()
+{
+    ?>
+    <h1>¿Sabías que?</h1>
+    <ul class="tp-list">
+        <li>
+            El número π (pi) es la relación entre la longitud de una circunferencia y su diámetro en geometría
+            euclidiana.
+        </li>
+        <li>
+            El valor numérico de π, truncado a sus primeras cifras, es
+            el siguiente:
+            <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/0d3cf8235d38f8a32bb201c47b15931e2cddca4b"
+                alt="">
+        </li>
+        <li>
+            Es un número irracional y una de las constantes matemáticas más importantes.
+        </li>
+        <li>
+            El valor de π se ha obtenido con diversas aproximaciones a lo largo de la historia, siendo una de las constantes
+            matemáticas que más aparece en las ecuaciones de la física.
+        </li>
+    </ul>
+    <h3>Existen diversas formas de obtener este valor en PHP:</h3>
+    <ol class="tp-list">
+        <li>
+            Usando html_entity_decode con la entidad HTML <?php echo htmlentities('`&pi;´'); ?>
+        </li>
+        <li>
+            Usando htmlspecialchars con código Unicode: <?php echo htmlentities('<h1><?php echo "\u{03C0}" ?></h1>'); ?>
+        </li>
+        <li>
+            Con chr y codificación UTF-8
+            <?php echo htmlentities('<h1><?php echo chr(227).chr(136).chr(176); ?></h1>'); ?>
+        </li>
+    </ol>
+    <a class="card-links" href="Unidad/1/ejercicio7">Volver al menu anterior</a>
+
+<?php } ?>

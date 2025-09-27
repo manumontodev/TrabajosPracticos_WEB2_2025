@@ -1,0 +1,203 @@
+<?php
+
+$arrExcercises = array(
+    1 => function () {
+
+        //cierra php ?>
+
+    <li>
+        <h2>1. ¿Para que se utiliza el ruteo en una aplicación web?</h2>
+    </li>
+    </section>
+    <section class="card">
+        <h1>ROUTEO:</h1>
+        <ul class="tp-list">
+            <li>1. El ruteo se utilia en una aplicación web para mejorar la semántica de las URL que permiten la navegación
+                dentro de la misma.</li>
+
+            </li>
+        </ul>
+    </section>
+
+<?php // abre php
+    
+    },
+    2 => function () {
+
+        //cierra php ?>
+
+    <li>
+        <h2>¿Qué ventajas tiene la generación de URL’s semánticas?</h2>
+    </li>
+    </section>
+    <section class="card">
+        <h1>URLs Semánticas:</h1>
+        <ul class="tp-list">
+            <li>Las principales ventajas de las URL semánticas son:
+                <ul>
+                    <li>Fáciles de entender para los usuarios</li>
+                    <li>Mejoran el posicionamiento web</li>
+                    <li>Proporcionan información sobre la estructura del sitio</li>
+                    <li>Fáciles de compartir, ej: whatsapp, llamada, divulgación</li>
+                    <li>Más estéticas, ej: imprimirlas en folletos, facebook, etc.</li>
+                </ul>
+    </section>
+
+<?php // abre php
+    
+    },
+    3 => function () {
+
+        //cierra php ?>
+
+    <li>
+        <h2>¿Qué es y que nos permite hacer el archivo .htaccess?</h2>
+    </li>
+    </section>
+    <section class="card">
+        <h1>.htaccess</h1>
+        <ul class="tp-list">
+            <li>El archivo .htaccess es un archivo de configuración de Apache HTTP web server.
+                <ul>
+                    <li>→ Permite configurar opciones a nivel de directorio</li>
+                    <li>Prevenir hotlinking</li>
+                    <li>Bloquear usuarios por IP</li>
+                    <li> Documentos de error</li>
+                    <li>Redirigir durante mantenimiento</li>
+                    <li>Ocultar listado del directorio</li>
+                    <li><strong>Ruteo</strong></li>
+                </ul>
+            </li>
+    </section>
+
+<?php // abre php
+    
+    },
+    4 => function () {
+        //cierra php ?>
+    <h2>Diseñe la tabla de ruteo para la siguiente funcionalidad de un sistema web.
+        No es necesario implementar nada, simplemente definir las acciones del router.</h2>
+    <ul class="tp-list">
+        <li>Obtener la lista de usuarios del sistema</li>
+        <li>Agregar un nuevo usuario</li>
+        <li>Ver la información de un usuario dado su DNI</li>
+    </ul>
+    </section>
+    <section class='card table-container'>
+        <table id="ex4-table">
+            <tbody>
+                <tr>
+                    <td class="diagonal">Obtener lista<br>de usuarios</td>
+                    <td>/users</td>
+                    <td>getUsers();</td>
+                </tr>
+                <tr>
+                    <td class="diagonal">Agregar un<br>nuevo usuario</td>
+                    <td>/users/add</td>
+                    <td>addUser();</td>
+                </tr>
+                <tr>
+                    <td class="diagonal">Ver la informacion<br>de un usuario<br>dado DNI</td>
+                    <td>/users/:dni</td>
+                    <td>getUserByDNI();</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+<?php // abre php
+    
+    },
+    5 => function () {
+
+        // cierra php ?>
+
+    <h2>Modifique el ejercicio 6 del práctico 1, para enrutar la tabla de multiplicar. Se debe generar un menú que tenga
+        accesos directos a los límites de la tabla más usados. </h2>
+    <h3>Nota: Se puede hacer lo mis mo con el ejercicio 4 del práctico 1</h3>
+
+    <ul class="list-style-none">
+        <li>/tabla/5</li>
+        <li>/tabla/10</li>
+        <li>/tabla/20</li>
+    </ul>
+
+    <form action="Unidad/2/ejercicio5" method="POST" class="forms-tp">
+        <input type="number" name="celdas" placeholder="Valor" min="2" max="20">
+        <button id="btnTabla">Generar tabla</button>
+        <div class="tp-row-links">
+            <a href="Unidad/2/ejercicio5/tabla/5"><button type="button">Tabla de 5</button></a>
+            <a href="Unidad/2/ejercicio5/tabla/10"><button type="button">Tabla de 10</button></a>
+            <a href="Unidad/2/ejercicio5/tabla/15"><button type="button">Tabla de 15</button></a>
+            <a href="Unidad/2/ejercicio5/tabla/20"><button type="button">Tabla de 20</button></a>
+        </div>
+        <p>(Min: 2 - Max: 20)</p>
+    </form>
+    </section>
+
+    <?php // abre php
+        
+            if (isset($_POST["celdas"])) {
+                $celdas = $_POST["celdas"];
+                if ($celdas > 1 && $celdas <= 20) {
+                    echo "
+            <section class='card table-container'>
+                    <h1>TABLA GENERADA:</h1>
+                    <table id='ex4-table'> 
+                        <thead>
+                            <tr>
+                                <th id='primer-casilla'></th>";
+                    for ($i = 1; $i <= $celdas; $i++) {
+                        echo "
+                                <th>$i</th>";
+                    }
+                    echo '
+                            </tr>
+                        </thead>
+                        <tbody>';
+                    for ($i = 1; $i <= $celdas; $i++) {
+                        echo "
+                            <tr>
+                                <th>$i</th>";
+                        for ($j = 1; $j <= $celdas; $j++) {
+                            $clase = ($i == $j) ? "diagonal" : "";
+                            echo "
+                                <td class='$clase'>" . ($i * $j) . "</td>";
+                        }
+                        echo "
+                            </tr>";
+                    }echo "
+                        </tbody>
+                    </table>
+            </section>";
+                }
+            }
+
+
+    },
+    6 => function () {
+        echo '<h2>Escribir el archivo .htaccess para convertir las rutas del sitio PhotoAlbum a URL’s semánticas.</h2>
+        <a href="../PhotoAlbum" class="card-links big">PhotoAlbum</a>';
+    },
+    7 => function () {
+        echo '<h2><a href="../Figuras">Figuras</a> es una pequeña aplicación que nos permite trabajar con figuras geométricas. Clone el repositorio en su máquina, hágalo correr y responda:</h2>';
+        echo '<ul class="tp-list">';
+        echo '<li>¿Está enrutada la aplicación?</li><li>¿Qué problemas traería si quiero agregar más y más funcionalidades?</li>';
+        echo '</ul>';
+        echo '<h2>Realice los siguientes cambios:</h2>';
+        echo '<ol class="tp-list">';
+        echo '<li>Modifique la aplicación e implemente un ruteo para las tres acciones existentes (listado, filtro y ver detalle). Puede basarse en el ejemplo de la calculadora de la teoría-práctica.</li>';
+        echo '<li>Opcional: Agregue funcionalidad para Agregar una figura al sistema</li>';
+        echo '<li>Opcional: Modifique y emprolije el código para reutilizar el listado de las acciones “listado” y “filtro”.</li>';
+        echo '</ol>';
+        echo '</section><section class="card">';
+        echo '<ul class="tp-list">
+             <li>No, no esta enrutada</li>
+             <li>Que hay que ponerse a laburar...</li>
+             </ul>';
+
+    }
+
+);
+
+// fin php ?>

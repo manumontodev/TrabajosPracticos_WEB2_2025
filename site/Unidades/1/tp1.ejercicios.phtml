@@ -1,0 +1,318 @@
+<?php
+$arrExcercises = array(
+    1 => function () {
+        echo "
+                    <h2>Escriba un script php que muestre una página html completa generada desde el servidor con un
+                    encabezado de primer nivel (h1) con el famoso “Hola mundo!”.</h2>
+                    <ul class='tp-list'>
+                        <li>¿Qué extensión debe tener la página?</li>
+                        <li>Lo que acabas de hacer: ¿Es una página dinámica o una página estática? ¿Cuál es la diferencia?</li>
+                        <li>¿Por qué es necesario tener un servidor web para realizar esto?</li>
+                    </ul>
+                </section>
+                <section class='card'>
+                    <h1>¡Hola mundo!</h1>
+                    <ul class='tp-list'>
+                        <li>La extensión que debe tener la página es '.php'</li>
+                        <li>Lo que se hizo es una <strong>página dinámica</strong>, ya que el contenido se va generando en tiempo real a partir de las solicitudes 
+                        generadas por el cliente.</li>
+                        <li>Es necesario un <strong>servidor web</strong> porque es el encargado de recibir las solicitudes del cliente. 
+                        El navegador no entiende PHP, es el servidor quien interpreta el código, lo convierte en HTML, y recién entonces 
+                        envía el resultado al navegador para que se vea correctamente.</li>
+                    </ul>";
+    },
+    2 => function () {
+        echo "
+        <h2>Escribir un programa que muestre una lista html generada desde el servidor a través de un arreglo. Identifique las diferencias entre arreglos asociativos e indexados</h2>
+    <ul class='tp-list'>
+        <li> 23. E. Martinez </li>
+        <li> 13. C. Romero </li>
+        <li> 19. N. Otamendi </li>
+        <li> 3. N. Tagliafico </li>
+        <li> 2. E. Molina </li>
+        <li> 5. L. Paredes </li>
+        <li> 7. R. De Paul </li>
+        <li> 16. T. Almada </li>
+        <li> 21. F. Mastantuono </li>
+        <li> 10. Lionel Messi </li>
+        <li> 9. J. Alvarez </li>
+    </ul>";
+    },
+    3 => function () {
+        echo '<h2>Permitir que el usuario mediante links y parámetros get modifique tamaño de la lista del ejercicio 2</h2>';
+        $opciones = array(
+            '3' => 'Ver 3',
+            '5' => 'Ver 5',
+            '7' => 'Ver 7',
+            'show-all' => 'Ver todos',
+            'hide' => 'Ocultar lista'
+        );
+        if (isset($_GET['mostrar']))
+            $cantidad = $_GET["mostrar"];
+        else
+            $cantidad = "hide";
+
+        if ($cantidad > 1 && $cantidad < 11)
+            echo "<h3>Actualimente se muestran $cantidad elementos en la lista</h3>";
+        if ($cantidad === "show-all")
+            echo "<h3>Actualimente se muestra la lista completa</h3>";
+        if ($cantidad === "hide")
+            echo "<h3>Actualimente la lista esta oculta, elija una opcion</h3>";
+        
+        
+        echo '<ul class="tp-list">';
+        foreach ($opciones as $key => $value) {
+            echo ("<li class='list-style-none'><a class='card-links' href=./Unidad/1/ejercicio3?mostrar=$key>$value</a></li>");
+        }
+        echo '</ul>';
+        echo '</section>';
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+    
+        // $cantidad = $id;
+    
+        $lista = array(
+            "23" => "E. Martinez",
+            "13" => "C. Romero",
+            "19" => "N. Otamendi",
+            "3" => "N. Tagliafico",
+            "2" => "E. Molina",
+            "5" => "L. Paredes",
+            "7" => "R. De Paul",
+            "16" => "T. Almada",
+            "21" => "F. Mastantuono",
+            "10" => "Lionel Messi",
+            "9" => "J. Alvarez"
+        );
+        echo '<section class="card">';
+        switch ($cantidad) {
+            case 'show-all':
+                echo "<h3>Mostrando lista todos los jugadores</h3>";
+                echo "<ul class='tp-list'>";
+
+                foreach ($lista as $camiseta => $jugador)
+                    echo "<li>$camiseta. $jugador</li>";
+                echo "</ul>";
+                break;
+            case 'hide':
+                echo '<h3>Lista oculta...</h3>';
+            default:
+                if ($cantidad > 1 && $cantidad < 12) {
+                    $i = 0;
+                    echo "<h3>Mostrando lista con los primeros $cantidad jugadores</h3>";
+                    echo "<ul class='tp-list'>";
+                    foreach ($lista as $camiseta => $jugador) {
+                        if ($i < $cantidad) {
+                            echo "<li>$camiseta. $jugador</li>";
+                            $i++;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+        }
+
+    },
+    4 => function () {
+        echo '
+        <h2>Imprimir una tabla de multiplicar generada automáticamente. El límite de la tabla es ingresado por un
+            usuario.</h2>
+                <form action=" " method="POST" class="forms-tp">
+                    <input type="number" name="celdas" placeholder="Valor" min="2" max="20">
+                    <button id="btnTabla">Generar tabla</button>
+                    <p>(Min: 2 - Max: 20)</p>
+                </form>
+            </section>
+        ';
+        if (isset($_POST["celdas"])) {
+            $celdas = $_POST["celdas"];
+            if ($celdas > 1 && $celdas <= 20) {
+                echo "
+            <section class='card table-container'>
+                    <h1>TABLA GENERADA:</h1>
+                    <table id='ex4-table'> 
+                        <thead>
+                            <tr>
+                                <th id='primer-casilla'></th>";
+
+                for ($i = 1; $i <= $celdas; $i++) {
+                    echo "
+                                <th>$i</th>";
+                }
+                echo '
+                            </tr>
+                        </thead>
+                        <tbody>
+            ';
+
+                for ($i = 1; $i <= $celdas; $i++) {
+                    echo "
+                            <tr>
+                                <th>$i</th>";
+                    for ($j = 1; $j <= $celdas; $j++) {
+                        $clase = ($i == $j) ? "diagonal" : "";
+                        echo "
+                                <td class='$clase'>" . ($i * $j) . "</td>";
+                    }
+                    echo "
+                            </tr>";
+                }
+                echo "
+                        </tbody>
+                    </table>
+            </section>";
+
+            }
+        }
+    },
+    5 => function () {
+        echo '
+                <h2>Escribir un programa que mediante un formulario html un usuario pueda ingresar su nombre, apellido y edad para
+                que sean enviados al servidor. El programa, debe recibir los datos y mostrar la información por pantalla. </h2>
+                <ol class="tp-list">
+                    <li>
+                    <p>a. Envíe el formulario usando los métodos POST y GET. ¿Cuál es la diferencia? ¿En qué situaciones
+                    considera mejor utilizar uno u el otro?
+                    </li>
+                    <li>
+                    <p>b. Investigue las diferencias entre los arreglos $_POST $_GET y $_REQUEST de PHP</p>
+                    </li>
+                    <li>
+                    <p>c. Genere validaciones de datos en el servidor. Ningún campo puede estar vacío.
+                    ¿Cuál es la diferencia entre realizar estas verificaciones del lado del cliente o del lado del servidor?
+                    </p>
+                    </li>
+                </ol>
+                </section>';
+        echo "
+            <section class='card'>                
+                <h2>Form por post:</h2>                  
+                <form action='Unidad/1/ejercicio5/Formulario' method='POST' class='forms-tp'>
+                    <label for='nombre-post'>Nombre</label>
+                    <input type='text' name='nombre-post' required pattern='[A-Za-zÀ-ÿ\s]{2,30}'>    
+                    <label for='apellido-post'>Apellido</label>
+                    <input type='text' name='apellido-post' required pattern='[A-Za-zÀ-ÿ\s]{2,30}'>    
+                    <label for='edad-post'>Edad</label>
+                    <input type='number' name='edad-post' required min='1' max='120'>    
+                    <button>Enviar</button>
+                </form>
+
+                <h2>Form por get:</h2>
+                <form action='Unidad/1/ejercicio5/Formulario' method='GET' class='forms-tp'>
+                    <label for='nombre-get'>Nombre</label>
+                    <input type='text' name='nombre-get' required pattern='[A-Za-zÀ-ÿ\s]{2,30}'>
+                    <label for='apellido-get'>Apellido</label>
+                    <input type='text' name='apellido-get' required pattern='[A-Za-zÀ-ÿ\s]{2,30}'>
+                    <label for='edad-get'>Edad</label>
+                    <input type='number' name='edad-get' required min='1' max='120'>
+                    <button type='submit'>Enviar</button>
+                </form>
+                ";
+
+    },
+    6 => function () {
+        echo '
+        <h2>Simulador de plazo fijo</h2>
+        <form action="" method="POST" class="forms-tp">
+
+            <label for="dinero">Cuanto dinero queres invertir?</label>
+            <input type="number" name="dinero" placeholder="min. $100 max. $1,000,000" required min="100" max="1000000">
+
+            <label for="meses">Por cuantos meses?</label>
+            <input type="number" name="meses" placeholder="min. 3 meses, max. 24 meses" required min="3" max="24">
+
+            <label for="interes">Cual es la TNA?</label>
+            <input type="number" name="interes" placeholder="tasa nominal anual" required min="0" max="1000">
+
+            <button type="submit">simular</button>
+        </form>
+        </section>
+        ';
+        if (!empty($_POST['dinero']) && !empty($_POST['meses']) && !empty($_POST['interes'])) {
+            $dineroInicial = $_POST['dinero'];
+            $totalMeses = $_POST['meses'];
+            $tna = $_POST['interes'];
+
+            // variables
+            $saldo = $dineroInicial;
+            $interesMensual = ($tna / 12);
+
+            // heading tabla
+            echo '<section class="card table-container"><h3>tasa mensual: ' . $tna . '%</h3><h3>Interes Mensual: ' . $interesMensual . '%</h3><table id="inversion-calculator-table">';
+            echo '<thead><tr><th>Mes</th><th>Saldo Parcial</th><th>Interés ganado</th></tr></thead>';
+            echo '<td id="inversion-calculator-first-month">Mes 1</td><td>' . round($saldo, 2) . '</td><td> -- </td></tr>';
+
+            // iteracion para el cuerpo de la tabla
+            for ($i = 2; $i <= $totalMeses; $i++) {
+                $ganancia = round((($saldo * $interesMensual)) / 100, 2);
+                $saldo = $saldo + $ganancia;
+                echo "<tr><td class='inversion-calculator-month'>Mes $i</td>";
+                echo '<td>' . round($saldo, 2) . '</td><td>' . $ganancia . '</tr>';
+            }
+
+            // fin tabla + totales
+            echo '<tr class="inversion-calculator-finish"><td>Total ganado: </td><td>$' . $saldo - $dineroInicial . '</td><td> - </td></section>';
+            echo '</tbody></table>';
+        }
+    },
+    7 => function () {
+
+        echo ' 
+        
+        <h2>Crear una calculadora básica “server side (usando php)”</h2>
+        <ul class="tp-list">
+            <li>Esta calculadora debe permitir generar operaciones básicas dado dos números leídos desde un formulario.</li>
+            <li>Ademas, se deberá incluir una barra de navegación para:</li>
+            <ul>
+                <li>Acceder a una sección <strong>número pi:</strong> Esta sección debe mostrar mostrar una descripción de lo que representa este número y su valor. 
+                    Investigue diferentes formas de obtener este valor en PHP.</li>
+                <li>Acceder a una sección <strong>about</strong> que indique los creadores de la calculadora.
+                    Si le indicamos con un parametro un desarrollador en particular debe mostrar solo eso.
+                    <p>ejemplo: <strong>about.php?developer=juan</strong></p></li>
+            </ul>
+        </ul>';
+
+
+        echo '</section>';
+        echo '<section class="card">';
+        if (isset($_GET['numero-pi'])) {
+            showPiInfo();
+            echo '';
+            die();
+        }
+        if (isset($_POST['valor1']) && isset($_POST['valor1']) && isset($_POST['operacion'])) {
+            $valor2 = $_POST['valor2'];
+            $operacion = $_POST['operacion'];
+            $valor1 = $_POST['valor1'];
+            echo "<h1>Resultado de la $operacion:</h1><h3>";
+
+            switch ($operacion) {
+                case 'suma':
+                    $resultado = "$valor1 + $valor2 = " . $valor1 + $valor2;
+                    echo $resultado;
+                    break;
+                case 'resta':
+                    $resultado = "$valor1 - $valor2 = " . $valor1 - $valor2;
+                    echo $resultado;
+                    break;
+                case 'multiplicacion':
+                    $resultado = "$valor1 * $valor2 = " . $valor1 * $valor2;
+                    echo $resultado;
+                    break;
+                case 'division':
+                    $resultado = "$valor1 / $valor2 = " . round(($valor1 / $valor2), 2);
+                    echo $resultado;
+                    break;
+                default:
+                    echo 'Se produjo un error, intente de nuevo</h3>';
+            }
+            echo '</h3>
+            <a class="card-links" href="Unidad/1/?exercise=7">Volver al menu anterior</a>';
+
+        } else {
+            showCalculator();
+        }
+    }
+
+);
+?>
